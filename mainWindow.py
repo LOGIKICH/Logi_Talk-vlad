@@ -1,26 +1,84 @@
-from typing import Tuple
-from customtkinter import*
+from customtkinter import *
 
-class Mainwindow(CTk):
-    def() __init__()
-    super(). __init__() 
-    self.geometry("700x500")
-    self.title("Logtalk")
 
-    #-----------------ВІДЖЕТИ----------------
-    self.menu_bth = CTkButton(self,width=200,text="menu",corner_radius=0)
-    self.menu_bth.place(x=0, y=0)
+class MainWindow(CTk):
+    def __init__(self):
+        super().__init__()
 
-    self.menu_frame = CTkFrame(self,width=200,height=500,corner_radius=0)
-    self.menu_frame.place(x=0, y=0)
 
-    self.send_frame = CTkFrame(self)
-    self.chat_frame.place(x=0, y=0)
+        self.geometry('400x600')
+        self.title("Chat Client")
 
-    self.send_frame = CTkScrollableFrame(self)
-    self.send_frame.place(x=0, y=0)
-    #---------------АДАПТИВНІСТЬ---------------
-    self.adaptive_ui()
 
-def adaptive_ui(self):
-    self.menu_frame.place(x= 0 , y = self.menu_bth.winfo
+        # Меню
+        self.label = None
+        self.menu_frame = CTkFrame(self, width=30, height=300)
+        self.menu_frame.pack_propagate(False)
+        self.menu_frame.place(x=0, y=0)
+        self.is_show_menu = False
+        self.speed_animate_menu = -20
+        self.btn = CTkButton(self, text='▶️', width=30)
+        self.btn.place(x=0, y=0)
+
+
+
+
+        # Основне поле чату
+        self.chat_field = CTkScrollableFrame(self)
+        self.chat_field.place(x=0, y=0)
+
+
+
+
+        # Поле введення та кнопки
+        self.message_entry = CTkEntry(self, placeholder_text='Введіть повідомлення:', height=40)
+        self.message_entry.place(x=0, y=0)
+        self.send_button = CTkButton(self, text='>', width=50, height=40)
+        self.send_button.place(x=0, y=0)
+
+
+
+
+        self.open_img_button = CTkButton(self, text='📂', width=50, height=40)
+        self.open_img_button.place(x=0, y=0)
+
+
+
+
+        self.adaptive_ui()
+       
+
+
+    def adaptive_ui(self):
+        self.menu_frame.configure(height=self.winfo_height())
+        self.chat_field.place(x=self.menu_frame.winfo_width())
+        self.chat_field.configure(width=self.winfo_width() - self.menu_frame.winfo_width() - 20,
+                                    height=self.winfo_height() - 40)
+        self.send_button.place(x=self.winfo_width() - 50, y=self.winfo_height() - 40)
+        self.message_entry.place(x=self.menu_frame.winfo_width(), y=self.send_button.winfo_y())
+        self.message_entry.configure(
+            width=self.winfo_width() - self.menu_frame.winfo_width() - 110)
+        self.open_img_button.place(x=self.winfo_width()-105, y=self.send_button.winfo_y())
+
+
+
+
+        self.after(50, self.adaptive_ui)
+
+def toggle_menu():
+    if self.is_show_menu:
+       self.is_show_menu = False
+       self.speed_animate_menu *= -1
+       self.bth.configure(text = " 💬")
+       self.show_menu()
+   else:
+       self.is_show_menu = True
+       self.
+    
+def show =_menu(self):
+self.menu_frame.configure(with = 
+
+
+main = MainWindow()
+main.mainloop()
+
